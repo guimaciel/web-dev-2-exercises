@@ -21,7 +21,7 @@ const arrowSum = (a, b) => {
   return a + b;
 };
 
-// const arrowSum = (a,b) => a + b;
+// const arrowSum = (a,b) => a + b
 
 console.log(sum(1, 2) === arrowSum(1, 2)); // true
 
@@ -31,33 +31,34 @@ const schoolName = 'Cornerstone College';
 const greeting = `Hello my name is ${firstName} and I am the Web Dev Instructor at ${schoolName}.`;
 
 // Function Expressions
-// let sum = function (a, b) {
-//   return a + b;
-// };
+let sum = function (a, b) {
+  return a + b;
+};
 
 // Higher Order Functions (HOF)
-const calculateSum = (func) => {
-  const result = func(1, 2);
-  return result;
-};
-calculateSum(sum);
+// const calculateSum = (func) => {
+//   const result = func(1, 2);
+//   return result;
+// };
+// calculateSum(sum);
 
 // OR returns a function
 
-// const calculateSum = (a, b) => {
-//   return function () {
-//     return a + b;
-//   };
-// };
+const calculateSum = (a, b) => {
+  return function () {
+    return a + b;
+  };
+};
 
-// calculateSum(1,2);
+calculateSum(1, 2);
 
 // Array.forEach
 
 const numbers = [1, 2, 3, 4, 5];
 const total = 0;
-const result = numbers.forEach((number) => {
+const result = numbers.forEach((number, index) => {
   console.log(number); // Prints every element of the numbers' array
+  console.log(index); // Print element index
   return total + number;
 });
 console.log(result); //result = undefined
@@ -117,6 +118,7 @@ nums.sort();
 console.log(nums); // [1, 1000, 21, 30, 4]
 
 nums.sort((a, b) => {
+  //1000  1         -1     [1,1000]
   if (a > b) return 1; // a will be positioned after b
   if (a < b) return -1; // a will be positioned before b
   return 0; // no changes
@@ -154,7 +156,7 @@ const every = numbers.every((number) => {
 console.log(every); // false
 
 // Array.indexOf
-
+//                0       1       2         3       4
 const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
 
 console.log(beasts.indexOf('bison')); // returns 1
@@ -199,11 +201,11 @@ const merged = [0, ...arr1, 2, ...arr2]; // 0,3,5,1,2,8,9,15
 const obj1 = { firstName: 'Foo', age: 22 };
 const obj2 = { lastName: 'Bar', gender: 'M' };
 
-const newObj = { ...obj1, ...obj2, planet: 'Earth' };
+const newObj = { ...obj1, firstName: 'Joe', ...obj2, planet: 'Earth' };
 console.log(newObj);
 /*
 {
-    firstName: 'Foo',
+    firstName: 'Joe',
     age:22,
     lastName: 'Bar'
     gender: 'M',
@@ -249,12 +251,13 @@ getPetInfo(cat, 'type'); //cat
 for (let info in dog) {
   console.log(info); // name, type, breed
   console.log(dog[info]); // Woody, dog, labrador
+  // dog[name][type][breed]
 }
 
 //object methods (returns array) - keys, values, entries
-console.log(Object.keys(dog)); // name, type, breed
-console.log(Object.values(dog)); // Woody, dog, labrador
-console.log(Object.entries(dog)); // [name,Woody], [type,dog], [breed,labrador]
+console.log(Object.keys(dog)); // [name, type, breed]
+console.log(Object.values(dog)); // [Woody, dog, labrador]
+console.log(Object.entries(dog)); // [[name,Woody], [type,dog], [breed,labrador]]
 
 //this
 const greetingPet = function () {
