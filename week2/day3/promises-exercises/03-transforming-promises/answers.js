@@ -9,6 +9,14 @@
 function mapPromise(promise, transformer){
   return new Promise((resolve, reject) => {
     /* IMPLEMENT ME!! */
+    promise
+    .then((data) => {
+      resolve(transformer(data));
+    })
+    .catch((err) => {
+      reject(err);
+    })
+
   });
 }
 
@@ -21,7 +29,17 @@ function mapPromise(promise, transformer){
  */
 function squarePromise(numberPromise){
   return numberPromise
-    .then(/* IMPLEMENT ME! */);
+    .then((data) => {
+      if (typeof data === 'number' || Number(data)) {
+        return data * data;
+      } else {
+        throw `Cannot convert '${data}' to a number!`
+      }      
+    })
+    .catch((err) => {
+      throw err;
+    });
+
 }
 
 /**
@@ -32,7 +50,9 @@ function squarePromise(numberPromise){
  */
 function squarePromiseOrZero(promise){
   return squarePromise(promise)
-    .catch(/* IMPLEMENT ME! */);
+    .catch((data) => {
+      if (data) return 0;
+    });
 }
 
 /**
@@ -42,7 +62,14 @@ function squarePromiseOrZero(promise){
  * @returns {Promise}
  */
 function switcheroo(promise){
-  return promise.then(/* IMPLEMENT ME */);
+  return promise.then(
+    (data) => {
+      throw data;
+    },
+    (err) => {
+      return err;
+    }
+  );
 }
 
 /**
