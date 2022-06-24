@@ -24,6 +24,5 @@
 
 ### Day 5:
 
-- Recap Week 4 / 5
-- Quiz
+- Recap Week 4
 - Final Project Kick-Off
